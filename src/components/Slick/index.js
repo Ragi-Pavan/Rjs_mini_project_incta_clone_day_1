@@ -14,27 +14,27 @@ const settings = {
   infinite: false,
   speed: 500,
   slidesToShow: 7,
-  slidesToScroll: 2,
+  slidesToScroll: 3,
   responsive: [
     {
       breakpoint: 768,
       settings: {
         slidesToShow: 6,
-        slidesToScroll: 1,
+        slidesToScroll: 2,
       },
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 5,
-        slidesToScroll: 1,
+        slidesToScroll: 2,
       },
     },
     {
       breakpoint: 480,
       settings: {
         slidesToShow: 4,
-        slidesToScroll: 1,
+        slidesToScroll: 2,
       },
     },
   ],
@@ -81,8 +81,8 @@ class ReactSlick extends Component {
         {storiesList.map(eachLogo => {
           const {userId, storyUrl, userName} = eachLogo
           return (
-            <div className="slider_item">
-              <div className="slick-item" key={userId}>
+            <div className="slider_item" key={userId}>
+              <div className="slick-item">
                 <div>
                   <img
                     className="logo-image"

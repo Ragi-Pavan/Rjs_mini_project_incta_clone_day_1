@@ -85,35 +85,37 @@ class Header extends Component {
             </div>
           )}
         </div>
-        <div className="header-for-larger-devices">
-          <div className="larger-icon-container">
-            <img
-              className="icon-in-header"
-              src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1697451367/logo_zyucph.jpg"
-              alt="icon"
-            />
-            <h1 className="heading">Insta Share</h1>
-          </div>
-          <div className="Search-and-logout-container">
-            <div className="search-container">
-              <input
-                type="search"
-                className="input-search"
-                placeholder="Search Caption"
+        <div className="larger-two">
+          <div className="header-for-larger-devices">
+            <div className="larger-icon-container">
+              <img
+                className="icon-in-header"
+                src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1697451367/logo_zyucph.jpg"
+                alt="icon"
               />
-              <p className="search-icon">
-                <BsSearch />
-              </p>
+              <h1 className="heading">Insta Share</h1>
             </div>
-            <button type="button" className="buttun">
-              Home
-            </button>
-            <button type="button" className="buttun">
-              Profile
-            </button>
-            <button type="button" className="log-button">
-              Logout
-            </button>
+            <div className="Search-and-logout-container">
+              <div className="search-container">
+                <input
+                  type="search"
+                  className="input-search"
+                  placeholder="Search Caption"
+                />
+                <p className="search-icon">
+                  <BsSearch />
+                </p>
+              </div>
+              <button type="button" className="buttun">
+                Home
+              </button>
+              <button type="button" className="buttun">
+                Profile
+              </button>
+              <button type="button" className="log-button">
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>

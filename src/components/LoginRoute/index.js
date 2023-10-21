@@ -92,7 +92,7 @@ class LoginRoute extends Component {
             <div className="icon-container">
               <img
                 className="icon"
-                src="https://res-console.cloudinary.com/dytgpb4j5/thumbnails/transform/v1/image/upload/Y19saW1pdCxoXzE2MDAsd18xNjAwLGZfanBnLGZsX2xvc3N5LmFueV9mb3JtYXQucHJlc2VydmVfdHJhbnNwYXJlbmN5LnByb2dyZXNzaXZl/v1/bG9nb196eXVjcGg=/template_primary"
+                src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1697451367/logo_zyucph.jpg"
                 alt="icon"
               />
               <h1 className="heading-for-icon">Insta Share</h1>

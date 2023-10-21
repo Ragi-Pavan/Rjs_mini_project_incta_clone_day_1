@@ -12,7 +12,6 @@
 
 .slick-container {
   width: 85%;
-
   margin-top: 10px;
 }
 
@@ -21,6 +20,9 @@
   height: 50px;
   flex-shrink: 1;
   border-radius: 25px;
+
+  border: 3px solid;
+  border-color: lightblue;
 }
 
 /* You can change the CSS color to style the Next and 
@@ -32,6 +34,7 @@ Previous Arrow buttons according to your project */
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+  display: none;
 }
 
 .name {
