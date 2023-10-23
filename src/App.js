@@ -10,12 +10,15 @@ import UserProfile from './components/UserProfile'
 
 import MyProfile from './components/Myprofile'
 
+import PageNotFound from './components/NotFound'
+
 const App = () => (
   <Switch>
     <Route exact path="/login" component={LoginRoute} />
     <Route exact path="/" component={Home} />
     <Route exact path="/users/:id" component={UserProfile} />
     <Route exact path="/my-profile" component={MyProfile} />
+    <Route component={PageNotFound} />
   </Switch>
 )
 

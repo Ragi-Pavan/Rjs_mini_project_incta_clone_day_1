@@ -13,6 +13,7 @@ class Header extends Component {
   state = {
     showHumberMenu: false,
     showSearchBar: false,
+    searchInput: '',
   }
 
   clikedOnHumberberg = () => {
@@ -40,8 +41,20 @@ class Header extends Component {
     })
   }
 
+  changeSearchInput = event => {
+    this.setState({
+      searchInput: event.target.value,
+    })
+  }
+
+  clikedonSearchIcon = () => {
+    const {searchedforResult} = this.props
+    const {searchInput} = this.state
+    searchedforResult(searchInput)
+  }
+
   render() {
-    const {showHumberMenu, showSearchBar} = this.state
+    const {showHumberMenu, showSearchBar, searchInput} = this.state
     return (
       <div className="heade-container">
         <div className="heder-for-small">
@@ -68,8 +81,10 @@ class Header extends Component {
                   type="search"
                   className="input-search"
                   placeholder="Search Caption"
+                  onChange={this.changeSearchInput}
+                  value={searchInput}
                 />
-                <p className="search-icon">
+                <p className="search-icon" onClick={this.clikedonSearchIcon}>
                   <BsSearch />
                 </p>
               </div>
@@ -87,7 +102,7 @@ class Header extends Component {
             <div className="humberger-menu">
               <ul className="ul">
                 <Link to="/" className="link">
-                  <li className="list-for-header">
+                  <li className="list-for-header" key="home">
                     <button
                       type="button"
                       className="buttons"
@@ -98,7 +113,7 @@ class Header extends Component {
                   </li>
                 </Link>
                 <Link to="/my-profile" className="link">
-                  <li className="list-for-header">
+                  <li className="list-for-header" key="profile">
                     <button
                       type="button"
                       className="buttons"
@@ -108,7 +123,11 @@ class Header extends Component {
                     </button>
                   </li>
                 </Link>
-                <li className="list-for-header" onClick={this.clickOnSearch}>
+                <li
+                  className="list-for-header"
+                  onClick={this.clickOnSearch}
+                  key="search"
+                >
                   Search
                 </li>
               </ul>
@@ -141,8 +160,10 @@ class Header extends Component {
                   type="search"
                   className="input-search"
                   placeholder="Search Caption"
+                  onChange={this.changeSearchInput}
+                  value={searchInput}
                 />
-                <p className="search-icon">
+                <p className="search-icon" onClick={this.clikedonSearchIcon}>
                   <BsSearch />
                 </p>
               </div>
