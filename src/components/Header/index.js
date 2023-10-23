@@ -1,33 +1,18 @@
 import './index.css'
 import {Component} from 'react'
 
+import {Link} from 'react-router-dom'
+
 import {BiMenu} from 'react-icons/bi'
 
 import {TiDeleteOutline} from 'react-icons/ti'
 
 import {BsSearch} from 'react-icons/bs'
 
-const Humbergermenudetails = [
-  {
-    id: 'HOME',
-    displaytext: 'Home',
-    link: '/',
-  },
-  {
-    id: 'SEARCH',
-    displaytext: 'Search',
-    link: '/Search',
-  },
-  {
-    id: 'PROFILE',
-    displaytext: 'Profile',
-    link: '/Profile',
-  },
-]
-
 class Header extends Component {
   state = {
     showHumberMenu: false,
+    showSearchBar: false,
   }
 
   clikedOnHumberberg = () => {
@@ -42,8 +27,21 @@ class Header extends Component {
     })
   }
 
+  clikedonCloseSearch = () => {
+    this.setState({
+      showSearchBar: false,
+    })
+  }
+
+  clickOnSearch = () => {
+    this.setState({
+      showSearchBar: true,
+      showHumberMenu: false,
+    })
+  }
+
   render() {
-    const {showHumberMenu} = this.state
+    const {showHumberMenu, showSearchBar} = this.state
     return (
       <div className="heade-container">
         <div className="heder-for-small">
@@ -63,14 +61,56 @@ class Header extends Component {
             </div>
           </div>
 
+          {showSearchBar && (
+            <div className="search-Out">
+              <div className="search-container-for-small">
+                <input
+                  type="search"
+                  className="input-search"
+                  placeholder="Search Caption"
+                />
+                <p className="search-icon">
+                  <BsSearch />
+                </p>
+              </div>
+              <button
+                type="button"
+                className="button-for-search-close"
+                onClick={this.clikedonCloseSearch}
+              >
+                <TiDeleteOutline />
+              </button>
+            </div>
+          )}
+
           {showHumberMenu && (
             <div className="humberger-menu">
               <ul className="ul">
-                {Humbergermenudetails.map(each => (
-                  <li key={each.id} className="list-item">
-                    {each.displaytext}
+                <Link to="/" className="link">
+                  <li className="list-for-header">
+                    <button
+                      type="button"
+                      className="buttons"
+                      onClick={this.clikedOnCloseHumberberg}
+                    >
+                      Home
+                    </button>
                   </li>
-                ))}
+                </Link>
+                <Link to="/my-profile" className="link">
+                  <li className="list-for-header">
+                    <button
+                      type="button"
+                      className="buttons"
+                      onClick={this.clikedOnCloseHumberberg}
+                    >
+                      Profile
+                    </button>
+                  </li>
+                </Link>
+                <li className="list-for-header" onClick={this.clickOnSearch}>
+                  Search
+                </li>
               </ul>
               <button type="button" className="log-button">
                 Logout
@@ -109,9 +149,12 @@ class Header extends Component {
               <button type="button" className="buttun">
                 Home
               </button>
-              <button type="button" className="buttun">
-                Profile
-              </button>
+              <Link to="/my-profile">
+                <button type="button" className="buttun">
+                  Profile
+                </button>
+              </Link>
+
               <button type="button" className="log-button">
                 Logout
               </button>

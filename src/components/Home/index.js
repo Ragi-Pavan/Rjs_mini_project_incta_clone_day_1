@@ -74,6 +74,7 @@ class Home extends Component {
       method: 'GET',
     }
     const response = await fetch(apiUrl, options)
+
     if (response.ok === true) {
       const data = await response.json()
       const updatedData = data.posts.map(each => ({

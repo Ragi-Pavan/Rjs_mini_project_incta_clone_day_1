@@ -132,6 +132,10 @@
   letter-spacing: 0.05px;
 }
 
+.link{
+    text-decoration:none;
+}
+
 @media (min-width: 768px) {
   .profilepic {
     width: 32px;

@@ -10,7 +10,7 @@ import {BsGrid3X3} from 'react-icons/bs'
 
 import Header from '../Header'
 
-class UserProfile extends Component {
+class MyProfile extends Component {
   state = {
     userData: {},
     isloading: true,
@@ -22,11 +22,7 @@ class UserProfile extends Component {
 
   getUserProfileData = async () => {
     const jwtToken = Cookies.get('jwt_token')
-    const {match} = this.props
-    const {params} = match
-    const {id} = params
-
-    const apiUrl = `https://apis.ccbp.in/insta-share/users/${id}`
+    const apiUrl = 'https://apis.ccbp.in/insta-share/my-profile'
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -37,16 +33,16 @@ class UserProfile extends Component {
     const data = await response.json()
     if (response.ok === true) {
       const UpdatedData = {
-        followersCount: data.user_details.followers_count,
-        followingCount: data.user_details.following_count,
-        id: data.user_details.id,
-        posts: data.user_details.posts,
-        postsCount: data.user_details.posts_count,
-        profilePic: data.user_details.profile_pic,
-        stories: data.user_details.stories,
-        userBio: data.user_details.user_bio,
-        userId: data.user_details.user_id,
-        userName: data.user_details.user_name,
+        followersCount: data.profile.followers_count,
+        followingCount: data.profile.following_count,
+        id: data.profile.id,
+        posts: data.profile.posts,
+        postsCount: data.profile.posts_count,
+        profilePic: data.profile.profile_pic,
+        stories: data.profile.stories,
+        userBio: data.profile.user_bio,
+        userId: data.profile.user_id,
+        userName: data.profile.user_name,
       }
       this.setState({userData: UpdatedData, isloading: false})
     }
@@ -171,4 +167,4 @@ class UserProfile extends Component {
   }
 }
 
-export default UserProfile
+export default MyProfile

@@ -2,6 +2,8 @@ import './index.css'
 
 import {Component} from 'react'
 
+import {Link} from 'react-router-dom'
+
 import {BsHeart} from 'react-icons/bs'
 
 import {FaRegComment} from 'react-icons/fa'
@@ -41,10 +43,13 @@ class PostCard extends Component {
     return (
       <li key={userId} className="list-item">
         <div className="larger-one">
-          <div className="profilePicContainer">
-            <img src={profilePic} alt={userName} className="profilepic" />
-            <p className="user-name">{userName}</p>
-          </div>
+          <Link to={`/users/${userId}`} className="link">
+            <div className="profilePicContainer">
+              <img src={profilePic} alt={userName} className="profilepic" />
+              <p className="user-name">{userName}</p>
+            </div>
+          </Link>
+
           <div>
             <img src={imageUrl} alt={userId} className="Image" />
           </div>

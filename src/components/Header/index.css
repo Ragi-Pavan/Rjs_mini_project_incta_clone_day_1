@@ -5,6 +5,39 @@
 .heade-container {
 }
 
+.button-for-search-close {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  padding-top: 7px;
+  padding-left: 20px;
+}
+
+.search-Out {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.search-container-for-small {
+  width: 214px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  border: 1px solid #dbdbdb;
+  background: #fafafa;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-for-header {
+  list-style-type: none;
+}
+
 .icon-in-header {
   width: 55px;
   height: 28px;
@@ -28,6 +61,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.buttons {
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+  margin-right: 10px;
 }
 
 .header-for-small-devices {
@@ -96,6 +136,28 @@
   display: none;
 }
 
+.input-search {
+  background-color: transparent;
+  border: none;
+  color: #989898;
+  padding: 10px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  outline: none;
+}
+
+.search-icon {
+  width: 34px;
+  height: 26px;
+  border-radius: 0px 2px 2px 0px;
+  background: #dbdbdb;
+  padding: 5px 5px 5px 5px;
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .heder-for-small {
     display: none;
@@ -115,6 +177,7 @@
     height: 30px;
     flex-shrink: 0;
   }
+
   .heading {
     color: #262626;
     font-feature-settings: 'clig' off, 'liga' off;
