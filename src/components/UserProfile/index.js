@@ -8,14 +8,21 @@ import RingLoader from 'react-spinners/RingLoader'
 
 import {BsGrid3X3} from 'react-icons/bs'
 
-import {AiFillCamera} from 'react-icons/ai'
+import {BiCamera} from 'react-icons/bi'
 
 import Header from '../Header'
+
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+}
 
 class UserProfile extends Component {
   state = {
     userData: {},
-    isloading: true,
+    apiStatus: apiStatusConstants.initial,
   }
 
   componentDidMount() {
@@ -23,6 +30,7 @@ class UserProfile extends Component {
   }
 
   getUserProfileData = async () => {
+    this.setState({apiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const {match} = this.props
     const {params} = match
@@ -50,7 +58,12 @@ class UserProfile extends Component {
         userId: data.user_details.user_id,
         userName: data.user_details.user_name,
       }
-      this.setState({userData: UpdatedData, isloading: false})
+      this.setState({
+        userData: UpdatedData,
+        apiStatus: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
 
@@ -143,7 +156,7 @@ class UserProfile extends Component {
               <div className="no-posts-view">
                 <div className="iconx">
                   <p className="no-p-icon">
-                    <AiFillCamera />
+                    <BiCamera />
                   </p>
                 </div>
                 <p className="npy">No Posts Yet</p>
@@ -175,12 +188,49 @@ class UserProfile extends Component {
     </div>
   )
 
+  clickedonretry = () => {
+    this.getUserProfileData()
+  }
+
+  renderFailureView = () => (
+    <div className="failure-container">
+      <div>
+        <img
+          className="eoorr-image"
+          src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1698141049/rqosmibopf2zr2mpi374.jpg"
+          alt="error"
+        />
+      </div>
+      <p className="err-msg-server">Something went wrong. Please try again</p>
+      <button
+        type="button"
+        className="retryButton"
+        onClick={this.clickedonretry}
+      >
+        Try Again
+      </button>
+    </div>
+  )
+
+  renderView = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return this.renderprofile()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
+      case apiStatusConstants.inProgress:
+        return this.renderLoader()
+      default:
+        return null
+    }
+  }
+
   render() {
-    const {isloading} = this.state
     return (
       <div className="user-profile-main-container">
         <Header />
-        {isloading ? this.renderLoader() : this.renderprofile()}
+        {this.renderView()}
       </div>
     )
   }

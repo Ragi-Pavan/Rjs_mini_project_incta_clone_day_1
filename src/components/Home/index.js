@@ -12,10 +12,17 @@ import ReactSlick from '../Slick'
 
 import PostCard from '../PostCard'
 
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+}
+
 class Home extends Component {
   state = {
     postsData: [],
-    isLoading: false,
+    apiStatus: apiStatusConstants.initial,
   }
 
   componentDidMount() {
@@ -64,7 +71,7 @@ class Home extends Component {
   }
 
   getpostsData = async () => {
-    this.setState({isLoading: true})
+    this.setState({apiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = `https://apis.ccbp.in/insta-share/posts`
     const options = {
@@ -88,7 +95,12 @@ class Home extends Component {
         likesCount: each.likes_count,
         comments: each.comments,
       }))
-      this.setState({postsData: updatedData, isLoading: false})
+      this.setState({
+        postsData: updatedData,
+        apiStatus: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
 
@@ -136,7 +148,7 @@ class Home extends Component {
   )
 
   updateSearchResult = async value => {
-    this.setState({isLoading: true})
+    this.setState({apiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = `https://apis.ccbp.in/insta-share/posts?search=${value}`
     const options = {
@@ -159,8 +171,15 @@ class Home extends Component {
         likesCount: each.likes_count,
         comments: each.comments,
       }))
-      this.setState({postsData: NewData, isLoading: false})
+      this.setState({postsData: NewData, apiStatus: apiStatusConstants.success})
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
     }
+  }
+
+  clickedonretry = () => {
+    this.getpostsData()
+    this.updateSearchResult()
   }
 
   renderFailureView = () => (
@@ -173,18 +192,35 @@ class Home extends Component {
         />
       </div>
       <p className="err-msg-server">Something went wrong. Please try again</p>
-      <button type="button" className="retryButton">
+      <button
+        type="button"
+        className="retryButton"
+        onClick={this.clickedonretry}
+      >
         Try Again
       </button>
     </div>
   )
 
+  renderView = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return this.renderPostsView()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
+      case apiStatusConstants.inProgress:
+        return this.renderLoadingView()
+      default:
+        return null
+    }
+  }
+
   render() {
-    const {isLoading} = this.state
     return (
       <div className="home-main-container">
         <Header searchedforResult={this.updateSearchResult} />
-        {isLoading ? this.renderLoadingView() : this.renderPostsView()}
+        {this.renderView()}
       </div>
     )
   }

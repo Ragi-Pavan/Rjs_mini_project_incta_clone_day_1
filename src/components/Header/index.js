@@ -68,11 +68,14 @@ class Header extends Component {
         <div className="heder-for-small">
           <div className="header-for-small-devices">
             <div className="icon-cont">
-              <img
-                className="icon-in-header"
-                src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1697451367/logo_zyucph.jpg"
-                alt="icon"
-              />
+              <Link to="/" className="link">
+                <img
+                  className="icon-in-header"
+                  src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1697451367/logo_zyucph.jpg"
+                  alt="icon"
+                />
+              </Link>
+
               <h1 className="heading">Insta Share</h1>
             </div>
             <div className="humberber-container">
@@ -159,11 +162,13 @@ class Header extends Component {
         <div className="larger-two">
           <div className="header-for-larger-devices">
             <div className="larger-icon-container">
-              <img
-                className="icon-in-header"
-                src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1697451367/logo_zyucph.jpg"
-                alt="icon"
-              />
+              <Link to="/" className="link">
+                <img
+                  className="icon-in-header"
+                  src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1697451367/logo_zyucph.jpg"
+                  alt="icon"
+                />
+              </Link>
               <h1 className="heading">Insta Share</h1>
             </div>
             <div className="Search-and-logout-container">
