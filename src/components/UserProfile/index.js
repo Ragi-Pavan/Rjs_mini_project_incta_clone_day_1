@@ -8,6 +8,8 @@ import RingLoader from 'react-spinners/RingLoader'
 
 import {BsGrid3X3} from 'react-icons/bs'
 
+import {AiFillCamera} from 'react-icons/ai'
+
 import Header from '../Header'
 
 class UserProfile extends Component {
@@ -66,6 +68,7 @@ class UserProfile extends Component {
       userId,
       userName,
     } = userData
+    const lenghtofPosts = posts.length
     return (
       <div className="main-for-profile-user">
         <div className="container-for-overall">
@@ -135,19 +138,31 @@ class UserProfile extends Component {
               <BsGrid3X3 className="grid" />
               <p className="posts-para">Posts</p>
             </div>
-            <div>
-              <ul className="ul-for-post">
-                {posts.map(each => (
-                  <li className="list-for-post" key={each.id}>
-                    <img
-                      className="image-for-post"
-                      src={each.image}
-                      alt={each.id}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
+
+            {lenghtofPosts === 0 ? (
+              <div className="no-posts-view">
+                <div className="iconx">
+                  <p className="no-p-icon">
+                    <AiFillCamera />
+                  </p>
+                </div>
+                <p className="npy">No Posts Yet</p>
+              </div>
+            ) : (
+              <div>
+                <ul className="ul-for-post">
+                  {posts.map(each => (
+                    <li className="list-for-post" key={each.id}>
+                      <img
+                        className="image-for-post"
+                        src={each.image}
+                        alt={each.id}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>

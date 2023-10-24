@@ -1,7 +1,9 @@
 import './index.css'
 import {Component} from 'react'
 
-import {Link} from 'react-router-dom'
+import Cookies from 'js-cookie'
+
+import {Link, withRouter} from 'react-router-dom'
 
 import {BiMenu} from 'react-icons/bi'
 
@@ -51,6 +53,12 @@ class Header extends Component {
     const {searchedforResult} = this.props
     const {searchInput} = this.state
     searchedforResult(searchInput)
+  }
+
+  clikedonLogout = () => {
+    const {history} = this.props
+    Cookies.remove('jwt_token')
+    history.replace('/login')
   }
 
   render() {
@@ -131,7 +139,11 @@ class Header extends Component {
                   Search
                 </li>
               </ul>
-              <button type="button" className="log-button">
+              <button
+                type="button"
+                className="log-button"
+                onClick={this.clikedonLogout}
+              >
                 Logout
               </button>
               <button
@@ -176,7 +188,11 @@ class Header extends Component {
                 </button>
               </Link>
 
-              <button type="button" className="log-button">
+              <button
+                type="button"
+                className="log-button"
+                onClick={this.clikedonLogout}
+              >
                 Logout
               </button>
             </div>
@@ -187,4 +203,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default withRouter(Header)

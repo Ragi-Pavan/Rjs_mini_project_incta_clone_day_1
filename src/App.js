@@ -1,6 +1,6 @@
 import './App.css'
 
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 import LoginRoute from './components/LoginRoute'
 
@@ -12,13 +12,16 @@ import MyProfile from './components/Myprofile'
 
 import PageNotFound from './components/NotFound'
 
+import ProtectedRoute from './components/ProtectedRoute'
+
 const App = () => (
   <Switch>
     <Route exact path="/login" component={LoginRoute} />
-    <Route exact path="/" component={Home} />
-    <Route exact path="/users/:id" component={UserProfile} />
-    <Route exact path="/my-profile" component={MyProfile} />
-    <Route component={PageNotFound} />
+    <ProtectedRoute exact path="/" component={Home} />
+    <ProtectedRoute exact path="/users/:id" component={UserProfile} />
+    <ProtectedRoute exact path="/my-profile" component={MyProfile} />
+    <Route exact path="/not-found" component={PageNotFound} />
+    <Redirect to="/not-found" />
   </Switch>
 )
 

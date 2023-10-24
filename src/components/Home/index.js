@@ -94,18 +94,40 @@ class Home extends Component {
 
   renderPostsView = () => {
     const {postsData} = this.state
-    return (
-      <ul className="ul-for-posts">
-        {postsData.map(each => (
-          <PostCard
-            postData={each}
-            key={each.postId}
-            ClikedOnLikeOrUnlike={this.initaiatePostLike}
-          />
-        ))}
-      </ul>
-    )
+    if (postsData.length >= 1) {
+      return (
+        <div>
+          <ReactSlick />
+          <ul className="ul-for-posts">
+            {postsData.map(each => (
+              <PostCard
+                postData={each}
+                key={each.postId}
+                ClikedOnLikeOrUnlike={this.initaiatePostLike}
+              />
+            ))}
+          </ul>
+        </div>
+      )
+    }
+    return this.searchNotFoundView()
   }
+
+  searchNotFoundView = () => (
+    <div className="search-not-found">
+      <div>
+        <img
+          className="no-search-image"
+          src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1698138001/ja8hdtuomztjfuyqxmgw.jpg"
+          alt="no-search-found"
+        />
+        <div>
+          <h1 className="heeed">Search Not Found</h1>
+          <p className="papi">Try different keyword or search again</p>
+        </div>
+      </div>
+    </div>
+  )
 
   renderLoadingView = () => (
     <div className="loader-container-home" data-testid="loader">
@@ -141,13 +163,27 @@ class Home extends Component {
     }
   }
 
+  renderFailureView = () => (
+    <div className="failure-container">
+      <div>
+        <img
+          className="eoorr-image"
+          src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1698141049/rqosmibopf2zr2mpi374.jpg"
+          alt="error"
+        />
+      </div>
+      <p className="err-msg-server">Something went wrong. Please try again</p>
+      <button type="button" className="retryButton">
+        Try Again
+      </button>
+    </div>
+  )
+
   render() {
     const {isLoading} = this.state
-
     return (
       <div className="home-main-container">
         <Header searchedforResult={this.updateSearchResult} />
-        <ReactSlick />
         {isLoading ? this.renderLoadingView() : this.renderPostsView()}
       </div>
     )
