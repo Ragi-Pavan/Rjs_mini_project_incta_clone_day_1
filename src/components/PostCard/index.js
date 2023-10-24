@@ -45,18 +45,23 @@ class PostCard extends Component {
         <div className="larger-one">
           <Link to={`/users/${userId}`} className="link">
             <div className="profilePicContainer">
-              <img src={profilePic} alt={userName} className="profilepic" />
+              <img
+                src={profilePic}
+                alt="post author profile"
+                className="profilepic"
+              />
               <p className="user-name">{userName}</p>
             </div>
           </Link>
 
           <div>
-            <img src={imageUrl} alt={userId} className="Image" />
+            <img src={imageUrl} alt="post" className="Image" />
           </div>
           <div className="informaton">
-            <div className="icons-container">
+            <div className="icons-container" data-testid="like">
               {Islike ? (
                 <FcLike
+                  data-testid="unLikeIcon"
                   className="iconz"
                   onClick={() => {
                     this.clikedOnUnLike(postId)
@@ -64,6 +69,7 @@ class PostCard extends Component {
                 />
               ) : (
                 <BsHeart
+                  data-testid="likeIcon"
                   className="iconz"
                   onClick={() => {
                     this.clikedOnLike(postId)

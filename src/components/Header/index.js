@@ -9,7 +9,7 @@ import {BiMenu} from 'react-icons/bi'
 
 import {TiDeleteOutline} from 'react-icons/ti'
 
-import {BsSearch} from 'react-icons/bs'
+import {FaSearch} from 'react-icons/fa'
 
 class Header extends Component {
   state = {
@@ -78,7 +78,7 @@ class Header extends Component {
 
               <h1 className="heading">Insta Share</h1>
             </div>
-            <div className="humberber-container">
+            <div className="humberber-container" data-testid="Humberger">
               <p className="humber-button" onClick={this.clikedOnHumberberg}>
                 <BiMenu />
               </p>
@@ -87,7 +87,7 @@ class Header extends Component {
 
           {showSearchBar && (
             <div className="search-Out">
-              <div className="search-container-for-small">
+              <div className="search-container-for-small" data-testid="search">
                 <input
                   type="search"
                   className="input-search"
@@ -95,14 +95,19 @@ class Header extends Component {
                   onChange={this.changeSearchInput}
                   value={searchInput}
                 />
-                <p className="search-icon" onClick={this.clikedonSearchIcon}>
-                  <BsSearch />
+                <p
+                  className="search-icon"
+                  onClick={this.clikedonSearchIcon}
+                  data-testid="searchIcon"
+                >
+                  <FaSearch />
                 </p>
               </div>
               <button
                 type="button"
                 className="button-for-search-close"
                 onClick={this.clikedonCloseSearch}
+                data-testid="searchIcon"
               >
                 <TiDeleteOutline />
               </button>
@@ -153,6 +158,7 @@ class Header extends Component {
                 type="button"
                 className="wrong-button"
                 onClick={this.clikedOnCloseHumberberg}
+                data-testid="searchIcon"
               >
                 <TiDeleteOutline />
               </button>
@@ -180,8 +186,12 @@ class Header extends Component {
                   onChange={this.changeSearchInput}
                   value={searchInput}
                 />
-                <p className="search-icon" onClick={this.clikedonSearchIcon}>
-                  <BsSearch />
+                <p
+                  className="search-icon"
+                  onClick={this.clikedonSearchIcon}
+                  data-testid="searchIcon"
+                >
+                  <FaSearch />
                 </p>
               </div>
               <button type="button" className="buttun">

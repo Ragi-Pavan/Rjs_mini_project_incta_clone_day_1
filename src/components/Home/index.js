@@ -131,7 +131,7 @@ class Home extends Component {
         <img
           className="no-search-image"
           src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1698138001/ja8hdtuomztjfuyqxmgw.jpg"
-          alt="no-search-found"
+          alt="search not found"
         />
         <div>
           <h1 className="heeed">Search Not Found</h1>
@@ -188,7 +188,7 @@ class Home extends Component {
         <img
           className="eoorr-image"
           src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1698141049/rqosmibopf2zr2mpi374.jpg"
-          alt="error"
+          alt="failure view"
         />
       </div>
       <p className="err-msg-server">Something went wrong. Please try again</p>

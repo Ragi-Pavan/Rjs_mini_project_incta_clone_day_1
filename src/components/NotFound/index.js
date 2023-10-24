@@ -14,7 +14,7 @@ const PageNotFound = props => {
           <img
             className="Not-found-image"
             src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1698131758/kbjkm1vrtpn1czlrdpyp.jpg"
-            alt="not-found"
+            alt="page not found"
           />
         </div>
 

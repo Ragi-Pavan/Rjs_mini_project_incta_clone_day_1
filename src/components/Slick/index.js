@@ -84,11 +84,7 @@ class ReactSlick extends Component {
             <div className="slider_item" key={userId}>
               <div className="slick-item">
                 <div>
-                  <img
-                    className="logo-image"
-                    src={storyUrl}
-                    alt="company logo"
-                  />
+                  <img className="logo-image" src={storyUrl} alt="user story" />
                 </div>
                 <p className="name">{userName}</p>
               </div>

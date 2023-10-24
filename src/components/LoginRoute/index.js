@@ -93,7 +93,7 @@ class LoginRoute extends Component {
             <img
               className="login_image"
               src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1693834575/Illustration_lfahb5.png"
-              alt="login"
+              alt="website login"
             />
           </div>
           <div className="form-container">
@@ -101,7 +101,7 @@ class LoginRoute extends Component {
               <img
                 className="icon"
                 src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1697451367/logo_zyucph.jpg"
-                alt="icon"
+                alt="website logo"
               />
               <h1 className="heading-for-icon">Insta Share</h1>
             </div>

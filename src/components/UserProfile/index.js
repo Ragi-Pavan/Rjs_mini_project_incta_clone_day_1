@@ -72,7 +72,6 @@ class UserProfile extends Component {
     const {
       followersCount,
       followingCount,
-      id,
       posts,
       postsCount,
       profilePic,
@@ -88,7 +87,11 @@ class UserProfile extends Component {
           <div className="profle-container">
             <p className="nameforuser">{userName}</p>
             <div className="profile-for-user-specific">
-              <img className="profile-for-user" src={profilePic} alt={id} />
+              <img
+                className="profile-for-user"
+                src={profilePic}
+                alt="user profile"
+              />
               <div className="posts-info-container">
                 <p className="posts-count">{userData.postsCount}</p>
                 <p className="posta">posts</p>
@@ -140,7 +143,11 @@ class UserProfile extends Component {
             <ul className="ul-for-story">
               {stories.map(each => (
                 <li key={each.id} className="list-item-for-story">
-                  <img className="story-img" src={each.image} alt={each.id} />
+                  <img
+                    className="story-img"
+                    src={each.image}
+                    alt="user story"
+                  />
                 </li>
               ))}
             </ul>
@@ -169,7 +176,7 @@ class UserProfile extends Component {
                       <img
                         className="image-for-post"
                         src={each.image}
-                        alt={each.id}
+                        alt="user post"
                       />
                     </li>
                   ))}
@@ -198,7 +205,7 @@ class UserProfile extends Component {
         <img
           className="eoorr-image"
           src="https://res.cloudinary.com/dytgpb4j5/image/upload/v1698141049/rqosmibopf2zr2mpi374.jpg"
-          alt="error"
+          alt="failure view"
         />
       </div>
       <p className="err-msg-server">Something went wrong. Please try again</p>
